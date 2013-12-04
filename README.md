@@ -5,12 +5,12 @@ Windows Driver Kit 7.1 all command located under \bin\amd64\ except if indicated
 
 makecert.exe -r -pe  -sv Atmel(Test).pvk -n CN=Atmel(Test) Atmel(Test).cer
 
-pvk2pfx.exe -pvk Atmel(Test).pvk -spc Atmel(Test).cer -pfx PrivateKey.pfx
+pvk2pfx.exe -pvk Atmel(Test).pvk -spc Atmel(Test).cer -pfx Atmel(Test).pfx
 
 Inf2cat.exe /driver:. /os:7_x64,7_X86
 (Windows Driver Kit 7.1 located under bin\selfsign\)
 
-Signtool.exe sign /v /f PrivateKey.pfx /n Atmel(Test) /t http://timestamp.verisign.com/scripts/timstamp.dll atmel_devices_cdc.cat
+Signtool.exe sign /v /f Atmel(Test).pfx /n Atmel(Test) /t http://timestamp.verisign.com/scripts/timstamp.dll atmel_devices_cdc.cat
 
 certmgr.exe /add Atmel(Test).cer /s /r localMachine root
 (Need to run this with administrator privilege)
