@@ -1,14 +1,16 @@
 Instructions to self-sign
 -------------------------
 
-Windows Driver Kit 7.1 all command located under \bin\amd64\ except if indicated otherwise. Execute:
+In Windows Driver Kit 7.1, all commands located under bin\amd64 except if indicated otherwise below. In Windows Driver Kit 8.1, all commands are located under bin\x64. 
+
+Execute:
 
 makecert.exe -r -pe  -sv Atmel(Test).pvk -n CN=Atmel(Test) Atmel(Test).cer
 
 pvk2pfx.exe -pvk Atmel(Test).pvk -spc Atmel(Test).cer -pfx Atmel(Test).pfx
 
 Inf2cat.exe /driver:. /os:7_x64,7_X86
-(Windows Driver Kit 7.1 located under bin\selfsign\)
+Note: In Windows Driver Kit 7.1 located under bin\selfsign, and in Windows Driver Kit 8.1 located under bin\x86
 
 Signtool.exe sign /v /f Atmel(Test).pfx /n Atmel(Test) /t http://timestamp.verisign.com/scripts/timstamp.dll atmel_devices_cdc.cat
 
